@@ -26,6 +26,10 @@ p {
     margin: 0;
 }
 
+.title {
+    text-align: center;
+}
+
 /* ТЕХНИКА ОТЗЫВЧИВЫХ ИЗОБРАЖЕНИЙ!!! */
 img {
     display: block;
@@ -50,6 +54,9 @@ img {
     margin-left: auto;
     margin-right: auto;
     /* background-color: rgb(165, 170, 174); */
+
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 /* cARD SET */
