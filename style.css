@@ -1,0 +1,122 @@
+:root {
+    --page-bg-color: #f9f9fd;
+    --primary-text-color: #212121;
+
+    /* --card-set-gap: 20px; - Переменная что бы не заморачиваться с одинаковыми значениями при переписывании кода. */
+    /* Изменив тут значение изменятся значения во всех местах где она есть */
+    --card-set-gap: 20px;
+
+    --card-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}
+
+body {
+    background-color: var(--page-bg-color);
+    color: var(--primary-text-color);
+    line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+}
+
+/* ТЕХНИКА ОТЗЫВЧИВЫХ ИЗОБРАЖЕНИЙ!!! */
+img {
+    display: block;
+
+    /* max-width: 100%; - значит что картинка может быть МЕНЬШЕ своей максимальной Ширины, НО НЕ БОЛЬШЕ!!! */
+    /* если карточка будет шире, что бы картинка не расширилась (как вариант - не теряла качество) */
+    /* max-width: 100%; */
+    width: 289.99px;
+
+    /* Не обязательно (браузеры ставят сами) но будет хорошей привычкой */
+    height: 250px;
+
+    /* Тепрь наша Картинка подстраивается под размер карточки (типа) */
+}
+
+/* CONTAINER */
+.container {
+    width: 960px;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    margin-left: auto;
+    margin-right: auto;
+    /* background-color: rgb(165, 170, 174); */
+}
+
+/* cARD SET */
+.card-set {
+    display: flex;
+    /* flex-wrap: wrap; делает контейнер многострочным. то что не будет влазить в троку, будет преноситься. */
+    flex-wrap: wrap; 
+    /* outline: 1px solid tomato; - обводка*/
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    /* Компенсируем ненужное (типо того) */
+    /* margin-top: -20px; */
+    /* margin-left: -20px; */
+
+    /* Как из переменной где 20px получить -20px? */
+    /* Оч просто! -1 * 20-(на переменную) = -20px */
+    margin-top: calk(-1 * var(--card-set-gap));
+    margin-left: calk(-1 * var(--card-set-gap));
+}
+
+/* без методоголии, просто более корректно даем понять бразузеру что item является ребенком card-set */
+.card-set > .item {
+    /* outline: 1px solid teal; - обводка*/
+
+    /* flex-basis: - говорим браузеру что всю доступную ШИРИНУ надо поделить на 3 */
+    /* Каждая карточка должна быть 3ть от своего родителя и -20px marginААА */
+    /* ТЕПЕРЬ МЕНЯЯ ЧИСЛО КАРТОЧЕК (3) они будут подстраиваться по размеру! */
+    /* flex-basis: calc(100% / 3 - 20px); */
+    /* НО мы сделаем по другому и вместо 20px запишем переменную */
+    flex-basis: calc(100% / 3 - var(--card-set-gap));
+
+    margin-top: var(--card-set-gap);
+    margin-left: var(--card-set-gap);
+}
+
+/* ВСЕ ЧТО ВЫШЕ ЭТО СЕТКА!!! */
+/* НИЖЕ ДЕЛАЕМ КАРТОЧКИ!!! */
+
+/* CARD */
+
+/* Селектор значит - ВСЕ что внутри item!!!! */
+/* будет обведено... */
+.item * {
+    /* outline: 1px solid tomato; */
+} 
+
+.card-thumb {
+    /* outline: 1px solid tomato; */
+}
+
+/* Тень для карточки с использованием переменной */
+.card {
+    box-shadow: var(--card-shadow);
+    border-radius: 5px;
+
+    /* Свойство для закругления краев у картики! (переполнеие) */
+    /* ибо все что вылазие за границы контейнера скрывается! */
+    overflow: hidden;
+}
+
+/* Паддинги для текста */
+.card-content {
+    padding: 10px;
+}
+
+.card-text {
+    margin-top: 10px;
+}
